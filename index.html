@@ -93,6 +93,22 @@ footer{border-top:1px solid #6b522f;background:#09090d;padding:20px 5%;text-alig
 .limited-note{font-size:8px;color:#e9c77a;border-top:1px solid #5e4827;padding-top:6px;margin:5px 0 8px;letter-spacing:.04em}
 .card[data-name="Raven & Serpent"]{border-color:#c59b4b;box-shadow:0 0 0 1px #c59b4b33,0 10px 26px #000b}
 .card[data-name="Raven & Serpent"] .type{color:#f0cf82;font-weight:bold}
+
+/* Correction qualité visuelle : ne plus agrandir le petit montage basse résolution */
+.art{height:150px!important;background:#08090c!important}
+.art:before{background-image:none!important;background:var(--art)!important;background-size:auto!important;transform:skew(-18deg) scale(1.2)!important;filter:none!important;opacity:1!important}
+.card:nth-child(n) .art:before{background-image:none!important}
+.raven-art{background:radial-gradient(ellipse at 72% 46%,#b51f20 0 8%,transparent 32%),radial-gradient(ellipse at 24% 55%,#82705a 0 3%,transparent 36%),repeating-linear-gradient(135deg,#100e0d 0 12px,#39302a 13px 16px,#171113 18px 28px)!important;border-color:#d2ad60!important}
+.raven-art:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 68% 55%,#e12c18aa,transparent 30%),linear-gradient(110deg,transparent 20%,#c9a15a55 45%,transparent 70%)!important;transform:none!important}
+.raven-art:after{background:linear-gradient(0deg,#08090c99,transparent 65%)!important}
+.account-area{scroll-margin-top:76px;padding:32px 0 42px;border-top:1px solid #604a2d;margin-top:28px}
+.account-area h2{margin:6px 0 8px;font-size:25px}
+.account-area>p{font-size:12px;color:#c7bdac}
+.account-panel{display:flex;align-items:center;justify-content:space-between;gap:18px;background:#131216;border:1px solid #9a773f;padding:20px;margin-top:16px}
+.account-panel strong{color:#f0ce83}
+.account-panel p{max-width:680px;color:#c8c0b3;font-size:12px;line-height:1.6}
+.account-panel .btn{white-space:nowrap;text-decoration:none}
+@media(max-width:650px){.account-panel{display:block}.account-panel .btn{display:inline-block}.art{height:125px!important}}
 </style></head>
 <body>
 <header class="topbar"><a class="logo" href="#">LORENZO SIX</a><nav><a href="#boutique">Boutique</a><a href="#collections">Collections</a><a href="#apropos">À propos</a><a href="#espace">Mon espace</a></nav><button class="cart" id="cart">Panier (0)</button></header>
@@ -117,7 +133,16 @@ footer{border-top:1px solid #6b522f;background:#09090d;padding:20px 5%;text-alig
 <article class="card" data-cat="Course auto" data-name="Offroad X"><div class="art" style="--art:radial-gradient(ellipse at 65% 65%,#e3a15b,transparent 45%),linear-gradient(120deg,#24150c,#9a5422,#28180e)"><b>OFFROAD X</b></div><div class="info"><div class="type">Course auto</div><span class="compat">COMPATIBLE PS5 SLIM</span><h3>Offroad X</h3><p class="desc">Esprit rallye et tout-terrain.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
 <article class="card" data-cat="Simulation" data-name="Dream City"><div class="art" style="--art:linear-gradient(120deg,#092d47,#16a3c6 50%,#122b5d)"><b>DREAM CITY</b></div><div class="info"><div class="type">Simulation</div><span class="compat">COMPATIBLE PS5 SLIM</span><h3>Dream City</h3><p class="desc">Ville lumineuse et moderne.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
 </div>
-<p class="disclaimer" id="apropos">Concepts visuels de présentation. Compatibilité exacte, fabrication et disponibilité à confirmer avant toute vente.<br><span id="espace">Espace personnel : bientôt disponible.</span></p>
+<p class="disclaimer" id="apropos">Concepts visuels de présentation. Compatibilité exacte, fabrication et disponibilité à confirmer avant toute vente.</p>
+<section class="account-area" id="espace">
+  <div class="smalltitle">LORENZO SIX · COMPTE</div>
+  <h2>Mon espace personnel</h2>
+  <p>Retrouve ici l'accès à la gestion de ta boutique.</p>
+  <div class="account-panel">
+    <div><strong>Espace propriétaire</strong><p>La connexion privée et le tableau de bord de gestion ne sont pas encore activés. Cette page GitHub Pages ne protège pas les comptes et ne peut pas enregistrer les commandes ou les stocks de façon sécurisée.</p></div>
+    <a class="btn" href="https://github.com/legrisalexis9-glitch/LORENZO-SIX">ACCÉDER AU DÉPÔT DU SITE</a>
+  </div>
+</section>
 </section></main>
 <footer>© 2026 LORENZO SIX — Ta console. Ton univers. · Boutique en préparation</footer>
 
