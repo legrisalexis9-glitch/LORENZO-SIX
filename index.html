@@ -84,6 +84,15 @@ footer{border-top:1px solid #6b522f;background:#09090d;padding:20px 5%;text-alig
 .card:nth-child(11) .art:before{background-position:66.666% 100%}
 .card:nth-child(12) .art:before{background-position:100% 100%}
 @media(max-width:650px){.art{height:112px}}
+
+/* Mise en avant de l'édition limitée Raven & Serpent */
+.raven-art{height:156px!important;background:#09090b url('assets/raven-serpent.jpg') center 43%/cover no-repeat!important;border-color:#d7ad54!important}
+.raven-art:before{display:none!important}
+.raven-art:after{background:linear-gradient(0deg,#08090c88,transparent 60%)!important}
+.raven-art b{align-self:flex-end;background:#100c0bcc;border:1px solid #d8b35e;color:#f3d78e;padding:7px 9px;font-size:12px!important;letter-spacing:.13em!important}
+.limited-note{font-size:8px;color:#e9c77a;border-top:1px solid #5e4827;padding-top:6px;margin:5px 0 8px;letter-spacing:.04em}
+.card[data-name="Raven & Serpent"]{border-color:#c59b4b;box-shadow:0 0 0 1px #c59b4b33,0 10px 26px #000b}
+.card[data-name="Raven & Serpent"] .type{color:#f0cf82;font-weight:bold}
 </style></head>
 <body>
 <header class="topbar"><a class="logo" href="#">LORENZO SIX</a><nav><a href="#boutique">Boutique</a><a href="#collections">Collections</a><a href="#apropos">À propos</a><a href="#espace">Mon espace</a></nav><button class="cart" id="cart">Panier (0)</button></header>
@@ -95,7 +104,7 @@ footer{border-top:1px solid #6b522f;background:#09090d;padding:20px 5%;text-alig
 </div>
 <div class="cataloghead"><div><div class="smalltitle">LORENZO SIX SHOP</div><h2>Les collections</h2><p class="hint" id="count">12 créations dans cette sélection</p></div><label class="hint">Trier : <select id="sort"><option value="default">Sélection</option><option value="az">Nom A à Z</option><option value="price">Prix croissant</option></select></label></div>
 <div class="grid" id="grid">
-<article class="card" data-cat="Édition limitée" data-name="Raven & Serpent"><div class="art" style="--art:radial-gradient(ellipse at 78% 48%,#e12d13 0 8%,transparent 30%),repeating-linear-gradient(130deg,#100d0c 0 10px,#5a5145 11px 18px,#171313 20px 30px),linear-gradient(90deg,#09090a,#7d1a17)"><b>RAVEN &amp; SERPENT</b></div><div class="info"><div class="type">Édition limitée</div><span class="compat">COMPATIBLE PS5 SLIM</span><h3>Raven &amp; Serpent</h3><p class="desc">Collection signature noir, rouge et or.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
+<article class="card" data-cat="Édition limitée" data-name="Raven & Serpent"><div class="art raven-art"><b>RAVEN &amp; SERPENT</b></div><div class="info"><div class="type">ÉDITION LIMITÉE · COLLECTION SIGNATURE</div><span class="compat">COMPATIBLE PS5 SLIM</span><h3>Raven &amp; Serpent — Édition limitée</h3><p class="desc">Noir, rouge et or · 32 exemplaires prévus au total, dont 30 destinés à la vente après fabrication.</p><p class="price">69,90 €</p><p class="limited-note">Série numérotée · Disponibilité à confirmer</p><button class="add">Ajouter au panier</button></div></article>
 <article class="card" data-cat="Action & aventure" data-name="Neon Vice"><div class="art" style="--art:linear-gradient(120deg,#fa3b9b,#241a91 40%,#04bde8 80%,#17112c)"><b>NEON VICE</b></div><div class="info"><div class="type">Couleurs & néons</div><span class="compat">COMPATIBLE PS5 SLIM</span><h3>Neon Vice</h3><p class="desc">Ambiance nocturne et néons.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
 <article class="card" data-cat="FPS & guerre" data-name="Shadow Protocol"><div class="art" style="--art:repeating-linear-gradient(135deg,#14191a 0 13px,#66704a 14px 23px,#24282a 25px 39px)"><b>SHADOW PROTOCOL</b></div><div class="info"><div class="type">FPS & guerre</div><span class="compat">COMPATIBLE PS5 SLIM</span><h3>Shadow Protocol</h3><p class="desc">Style tactique sombre et futuriste.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
 <article class="card" data-cat="Horreur" data-name="Crimson Horror"><div class="art" style="--art:radial-gradient(ellipse at 70% 45%,#d31b19,transparent 38%),repeating-linear-gradient(120deg,#09090b 0 12px,#3b1117 13px 24px,#151216 26px 38px)"><b>CRIMSON HORROR</b></div><div class="info"><div class="type">Horreur</div><span class="compat">COMPATIBLE PS5 SLIM</span><h3>Crimson Horror</h3><p class="desc">Rouge profond et ambiance inquiétante.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
