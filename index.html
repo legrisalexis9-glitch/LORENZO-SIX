@@ -67,6 +67,23 @@ footer{border-top:1px solid #6b522f;background:#09090d;padding:20px 5%;text-alig
 
 .cart-panel{display:none;position:fixed;z-index:30;right:18px;top:70px;width:min(420px,calc(100vw - 28px));max-height:82vh;overflow:auto;background:#111216;border:1px solid var(--gold);box-shadow:0 15px 45px #000d;padding:18px;color:#fff}
 .cart-panel.open{display:block}.cart-panel h2{margin:0 0 14px}.cart-item{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #55442d;padding:11px 0;font-size:12px}.cart-item button{background:transparent;color:#f0c977;border:1px solid #8d6c35;padding:5px 8px;cursor:pointer}.cart-controls{display:flex;gap:8px;margin-top:14px}.cart-controls input{min-width:0;flex:1;background:#090a0e;color:#fff;border:1px solid #715a34;padding:10px}.cart-controls button,.checkout-demo{background:var(--gold);border:0;color:#17120b;font-weight:bold;padding:10px 12px;cursor:pointer}.cart-total{display:flex;justify-content:space-between;margin-top:14px;font-size:13px}.promo-note{font-size:10px;color:#c8bba6;line-height:1.5;margin:10px 0}.cart-close{float:right;background:transparent;border:0;color:#fff;font-size:20px;cursor:pointer}.cart-status{font-size:11px;color:#e8c979;min-height:16px;margin-top:8px}.checkout-demo{width:100%;margin-top:12px}.secure-note{font-size:9px;color:#a9a09b;line-height:1.5;margin-top:9px}
+
+/* Visuels produits LORENZO SIX : chaque carte utilise sa vignette du montage */
+.art{height:128px;background:#08090c}
+.art:before{background-image:url('assets/collections.jpg')!important;background-size:400% 300%!important;transform:none!important;filter:none!important;opacity:1}
+.card:nth-child(1) .art:before{background-position:0% 0%}
+.card:nth-child(2) .art:before{background-position:33.333% 0%}
+.card:nth-child(3) .art:before{background-position:66.666% 0%}
+.card:nth-child(4) .art:before{background-position:100% 0%}
+.card:nth-child(5) .art:before{background-position:0% 50%}
+.card:nth-child(6) .art:before{background-position:33.333% 50%}
+.card:nth-child(7) .art:before{background-position:66.666% 50%}
+.card:nth-child(8) .art:before{background-position:100% 50%}
+.card:nth-child(9) .art:before{background-position:0% 100%}
+.card:nth-child(10) .art:before{background-position:33.333% 100%}
+.card:nth-child(11) .art:before{background-position:66.666% 100%}
+.card:nth-child(12) .art:before{background-position:100% 100%}
+@media(max-width:650px){.art{height:112px}}
 </style></head>
 <body>
 <header class="topbar"><a class="logo" href="#">LORENZO SIX</a><nav><a href="#boutique">Boutique</a><a href="#collections">Collections</a><a href="#apropos">À propos</a><a href="#espace">Mon espace</a></nav><button class="cart" id="cart">Panier (0)</button></header>
