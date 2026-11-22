@@ -64,6 +64,9 @@ footer{border-top:1px solid #6b522f;background:#09090d;padding:20px 5%;text-alig
 @media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.herotext{padding-left:6%}.maplabels{width:48%;right:3%}}
 @media(max-width:650px){.topbar{padding:0 4%;height:auto;min-height:58px;flex-wrap:wrap;gap:10px;padding-top:10px;padding-bottom:10px}nav{gap:11px;font-size:10px}.hero{height:290px}.herotext{padding:45px 6%}.maplabels{opacity:.3;width:100%;right:0}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.art{height:78px;margin:8px 8px 0}.info{padding:8px}.catalog{width:95%}}
 @media(max-width:390px){nav{width:100%;justify-content:space-between}.grid{grid-template-columns:1fr 1fr}}
+
+.cart-panel{display:none;position:fixed;z-index:30;right:18px;top:70px;width:min(420px,calc(100vw - 28px));max-height:82vh;overflow:auto;background:#111216;border:1px solid var(--gold);box-shadow:0 15px 45px #000d;padding:18px;color:#fff}
+.cart-panel.open{display:block}.cart-panel h2{margin:0 0 14px}.cart-item{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #55442d;padding:11px 0;font-size:12px}.cart-item button{background:transparent;color:#f0c977;border:1px solid #8d6c35;padding:5px 8px;cursor:pointer}.cart-controls{display:flex;gap:8px;margin-top:14px}.cart-controls input{min-width:0;flex:1;background:#090a0e;color:#fff;border:1px solid #715a34;padding:10px}.cart-controls button,.checkout-demo{background:var(--gold);border:0;color:#17120b;font-weight:bold;padding:10px 12px;cursor:pointer}.cart-total{display:flex;justify-content:space-between;margin-top:14px;font-size:13px}.promo-note{font-size:10px;color:#c8bba6;line-height:1.5;margin:10px 0}.cart-close{float:right;background:transparent;border:0;color:#fff;font-size:20px;cursor:pointer}.cart-status{font-size:11px;color:#e8c979;min-height:16px;margin-top:8px}.checkout-demo{width:100%;margin-top:12px}.secure-note{font-size:9px;color:#a9a09b;line-height:1.5;margin-top:9px}
 </style></head>
 <body>
 <header class="topbar"><a class="logo" href="#">LORENZO SIX</a><nav><a href="#boutique">Boutique</a><a href="#collections">Collections</a><a href="#apropos">À propos</a><a href="#espace">Mon espace</a></nav><button class="cart" id="cart">Panier (0)</button></header>
@@ -91,8 +94,29 @@ footer{border-top:1px solid #6b522f;background:#09090d;padding:20px 5%;text-alig
 <p class="disclaimer" id="apropos">Concepts visuels de présentation. Compatibilité exacte, fabrication et disponibilité à confirmer avant toute vente.<br><span id="espace">Espace personnel : bientôt disponible.</span></p>
 </section></main>
 <footer>© 2026 LORENZO SIX — Ta console. Ton univers. · Boutique en préparation</footer>
+
+<div class="cart-panel" id="cartPanel" aria-label="Panier">
+<button class="cart-close" id="closeCart" aria-label="Fermer">×</button>
+<h2>Ton panier</h2><div id="cartItems"><p class="promo-note">Ton panier est vide pour le moment.</p></div>
+<div class="cart-controls"><input id="promoInput" placeholder="Code promo" aria-label="Code promo"><button id="applyPromo">Appliquer</button></div>
+<p class="promo-note">Code <strong>LORENZO19</strong> : remise de 19 % sur les articles éligibles. Une seule utilisation par commande dans cette démonstration.</p>
+<div class="cart-status" id="cartStatus"></div>
+<div class="cart-total"><span>Sous-total</span><strong id="subtotal">0,00 €</strong></div>
+<div class="cart-total"><span>Remise</span><strong id="discount">0,00 €</strong></div>
+<div class="cart-total"><span>Total estimé</span><strong id="grandTotal">0,00 €</strong></div>
+<button class="checkout-demo" id="checkoutDemo">Continuer vers le paiement</button>
+<p class="secure-note">Paiement non activé pour le moment. Aucun numéro de carte ne doit être saisi ici. Le paiement sécurisé sera ajouté après configuration du prestataire et du serveur.</p>
+</div>
 <script>
-let total=0;document.querySelectorAll('.add').forEach(b=>b.addEventListener('click',()=>{total++;document.getElementById('cart').textContent='Panier ('+total+')';let old=b.textContent;b.textContent='Ajouté ✓';setTimeout(()=>b.textContent=old,800)}));
-let chosen='all';function redraw(){let cards=[...document.querySelectorAll('.card')],visible=cards.filter(c=>chosen==='all'||c.dataset.cat===chosen);let mode=document.getElementById('sort').value;if(mode==='az')visible.sort((a,b)=>a.dataset.name.localeCompare(b.dataset.name));if(mode==='price')visible.sort((a,b)=>69.9-69.9);cards.forEach(c=>c.hidden=true);visible.forEach(c=>{c.hidden=false;document.getElementById('grid').appendChild(c)});document.getElementById('count').textContent=visible.length+' création(s) dans cette sélection'}
-document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{document.querySelector('.filter.active').classList.remove('active');b.classList.add('active');chosen=b.dataset.filter;redraw()}));document.getElementById('sort').addEventListener('change',redraw);
+
+const cartItems=new Map();let promoApplied=false;const price=69.90;
+const euro=n=>n.toLocaleString('fr-FR',{style:'currency',currency:'EUR'});
+function updateCart(){let qty=0,sub=0;cartItems.forEach(v=>{qty+=v.qty;sub+=v.qty*v.price});const reduction=promoApplied?sub*.19:0;document.getElementById('cart').textContent='Panier ('+qty+')';document.getElementById('subtotal').textContent=euro(sub);document.getElementById('discount').textContent='−'+euro(reduction);document.getElementById('grandTotal').textContent=euro(sub-reduction);const box=document.getElementById('cartItems');box.innerHTML='';if(!cartItems.size){box.innerHTML='<p class="promo-note">Ton panier est vide pour le moment.</p>'}else{cartItems.forEach((v,k)=>{const row=document.createElement('div');row.className='cart-item';const label=document.createElement('span');label.textContent=v.name+' × '+v.qty+' — '+euro(v.price*v.qty);const remove=document.createElement('button');remove.textContent='Supprimer';remove.addEventListener('click',()=>{cartItems.delete(k);updateCart()});row.append(label,remove);box.appendChild(row)})}}
+document.querySelectorAll('.add').forEach((b,i)=>b.addEventListener('click',()=>{const card=b.closest('.card'),name=card.dataset.name;const item=cartItems.get(name)||{name,qty:0,price};item.qty++;cartItems.set(name,item);updateCart();const old=b.textContent;b.textContent='Ajouté ✓';setTimeout(()=>b.textContent=old,800)}));
+document.getElementById('cart').addEventListener('click',()=>document.getElementById('cartPanel').classList.toggle('open'));
+document.getElementById('closeCart').addEventListener('click',()=>document.getElementById('cartPanel').classList.remove('open'));
+document.getElementById('applyPromo').addEventListener('click',()=>{const code=document.getElementById('promoInput').value.trim().toUpperCase(),status=document.getElementById('cartStatus');if(code==='LORENZO19'){promoApplied=true;status.textContent='Code appliqué : −19 % !';}else{promoApplied=false;status.textContent='Code promo invalide.';}updateCart()});
+document.getElementById('checkoutDemo').addEventListener('click',()=>{document.getElementById('cartStatus').textContent='Le paiement sécurisé n’est pas encore activé.'});
+let chosen='all';function redraw(){let cards=[...document.querySelectorAll('.card')],visible=cards.filter(c=>chosen==='all'||c.dataset.cat===chosen);let mode=document.getElementById('sort').value;if(mode==='az')visible.sort((a,b)=>a.dataset.name.localeCompare(b.dataset.name));cards.forEach(c=>c.hidden=true);visible.forEach(c=>{c.hidden=false;document.getElementById('grid').appendChild(c)});document.getElementById('count').textContent=visible.length+' création(s) dans cette sélection'}
+document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{document.querySelector('.filter.active').classList.remove('active');b.classList.add('active');chosen=b.dataset.filter;redraw()}));document.getElementById('sort').addEventListener('change',redraw);updateCart();
 </script></body></html>
