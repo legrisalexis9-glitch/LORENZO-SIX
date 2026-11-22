@@ -1,96 +1,102 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LORENZO SIX | Boutique officielle</title>
+<title>LORENZO SIX — Collections PS5 Slim</title>
 <style>
+:root{--gold:#d8ae55;--gold2:#f1d28a;--ink:#09090d;--panel:#17161a;--muted:#c6b9b0}
 *{box-sizing:border-box}
-body{margin:0;background:#090909;color:white;font-family:Arial,sans-serif}
-header{padding:22px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #9b783b}
-.logo{font-size:27px;font-weight:bold;letter-spacing:5px;color:#d9b76c}
-nav a{color:white;text-decoration:none;margin:8px}
-.hero{padding:100px 8%;background:linear-gradient(110deg,#080808,#29131e,#080808);min-height:390px}
-.hero small{color:#d9b76c;letter-spacing:4px}
-h1{font-size:clamp(42px,8vw,78px);margin:20px 0;color:#e6c77e}
-.hero p{max-width:550px;line-height:1.7;color:#ddd}
-button,.btn{background:#d9b76c;color:#111;border:0;padding:13px 22px;font-weight:bold;cursor:pointer;text-decoration:none}
-section{padding:50px 8%}
-h2{color:#d9b76c;letter-spacing:3px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
-.card{background:#171717;padding:20px;border:1px solid #5c4828}
-.cover{height:190px;background:linear-gradient(135deg,#111,#6e1d2a,#111);display:grid;place-items:center;color:#e6c77e;font-size:25px;text-align:center;font-weight:bold}
-.price{color:#e6c77e;font-size:23px}
-.note{color:#aaa;font-size:13px;line-height:1.6}
-footer{padding:30px;text-align:center;border-top:1px solid #5c4828;color:#aaa}
+html{scroll-behavior:smooth}
+body{margin:0;background:#09090d;color:#fff;font-family:Arial,Helvetica,sans-serif}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 10% 12%,#59211d88,transparent 32%),radial-gradient(ellipse at 85% 25%,#35134e99,transparent 35%),linear-gradient(130deg,#100b11,#17101b 45%,#080d17)}
+body:after{content:"";position:fixed;inset:0;z-index:-1;opacity:.5;background:repeating-linear-gradient(115deg,transparent 0 80px,#b34b3210 82px 84px),linear-gradient(180deg,#05040a22,#05040a99)}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(94%,1680px);margin:auto}
+.top{padding:24px 0 17px;border-bottom:1px solid #d8ae5544;background:#09070ac9}
+.brand{font-size:clamp(22px,3vw,34px);letter-spacing:.28em;color:var(--gold2);font-weight:900}
+.tag{font-size:9px;letter-spacing:.35em;color:var(--gold);margin-top:5px}
+.ambiance{padding:22px 0 20px}
+.eyebrow{font-size:9px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase}
+h1{font-size:clamp(22px,3vw,34px);margin:7px 0 5px}
+.sub{color:#bfb3b5;font-size:12px;margin:0 0 14px}
+.filters{display:flex;gap:7px;flex-wrap:wrap}
+.filter{border:1px solid #6c5736;background:#17151a;color:#eee;border-radius:20px;padding:7px 12px;font-size:10px;cursor:pointer}
+.filter.active,.filter:hover{background:var(--gold);color:#17120b;border-color:var(--gold)}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:10px 0 14px}
+.section-head h2{font-size:19px;margin:0 0 5px}
+.section-head p{font-size:10px;color:#b7a9a8;margin:0}
+select{background:#17151a;color:#fff;border:1px solid #5d4a30;padding:8px 10px;border-radius:4px;font-size:11px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding-bottom:45px}
+.card{background:linear-gradient(145deg,#211d1c,#111115 65%);border:1px solid #57452d;border-radius:4px;overflow:hidden;box-shadow:0 8px 25px #0008;min-width:0}
+.banner{height:112px;margin:13px 13px 0;border:1px solid #b58d43;border-radius:3px;position:relative;overflow:hidden;display:flex;align-items:center;padding:15px;isolation:isolate}
+.banner:before{content:"";position:absolute;inset:-25%;z-index:-1;transform:skew(-18deg);background:repeating-linear-gradient(125deg,transparent 0 20px,#ffffff18 22px 24px),radial-gradient(ellipse at 75% 45%,var(--glow),transparent 48%),linear-gradient(110deg,#08090d,var(--tone),#09090d)}
+.banner:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#05050988,transparent 70%)}
+.banner span{font-size:clamp(14px,2vw,24px);font-weight:900;letter-spacing:.08em;text-shadow:0 2px 8px #000;z-index:1;max-width:75%}
+.cardbody{padding:10px 12px 12px}
+.category{font-size:8px;letter-spacing:.14em;color:var(--gold2);text-transform:uppercase}
+.compat{display:inline-block;margin:6px 0 5px;padding:3px 5px;border:1px solid #a47d3e;color:#f1d28a;font-size:8px;font-weight:bold}
+h3{font-size:13px;margin:3px 0 5px}
+.desc{font-size:10px;color:#bcb3b0;min-height:24px;margin:0 0 10px}
+.price{font-weight:bold;font-size:14px;color:#f1d28a;margin:0 0 9px}
+.add{width:100%;border:0;border-radius:2px;background:var(--gold);color:#16110a;padding:10px 8px;font-size:10px;font-weight:bold;cursor:pointer}
+.add:hover{background:var(--gold2)}
+.cartline{position:fixed;right:18px;bottom:18px;z-index:5;background:var(--gold);color:#17120b;padding:12px 17px;border-radius:3px;font-size:12px;font-weight:bold;box-shadow:0 4px 22px #0009}
+.notice{text-align:center;color:#aa9fa0;font-size:10px;padding:0 0 30px}
+footer{border-top:1px solid #6d5433;padding:22px 0;text-align:center;color:#a99fa0;font-size:10px}
+@media(max-width:1050px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:720px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.banner{height:88px;margin:8px 8px 0}.cardbody{padding:8px}.wrap{width:96%}.section-head{align-items:start;flex-direction:column}}
+@media(max-width:420px){.grid{grid-template-columns:1fr 1fr}.brand{letter-spacing:.16em}}
 </style>
 </head>
 <body>
-
-<header>
-<div class="logo">LORENZO SIX</div>
-<nav>
-<a href="#boutique">Boutique</a>
-<a href="#edition">Collection</a>
-<a href="#contact">Contact</a>
-</nav>
-</header>
-
-<div class="hero">
-<small>BOUTIQUE OFFICIELLE</small>
-<h1>LORENZO SIX</h1>
-<p>Découvre notre univers de coques personnalisées pour PS5 Slim. Des designs originaux, des collections exclusives et un style premium noir et or.</p>
-<a class="btn" href="#boutique">DÉCOUVRIR</a>
-</div>
-
-<section id="boutique">
-<h2>NOS COLLECTIONS</h2>
-<div class="products">
-
-<div class="card">
-<div class="cover">RAVEN<br>&amp; SERPENT</div>
-<h3>RAVEN &amp; SERPENT</h3>
-<p class="note">Édition limitée prévue à 32 exemplaires : 30 destinés à la vente.</p>
-<p class="price">69,90 €</p>
-<p class="note">Prix de lancement envisagé.</p>
-<button onclick="alert('Les commandes ne sont pas encore ouvertes.')">BIENTÔT DISPONIBLE</button>
-</div>
-
-<div class="card">
-<div class="cover">VICE<br>CITY</div>
-<h3>VICE CITY</h3>
-<p class="note">Concept original aux couleurs néon.</p>
-<p class="price">À venir</p>
-<button onclick="alert('Collection en préparation.')">DÉCOUVRIR</button>
-</div>
-
-<div class="card">
-<div class="cover">DARK<br>EDITION</div>
-<h3>DARK EDITION</h3>
-<p class="note">Un concept noir et or premium.</p>
-<p class="price">À venir</p>
-<button onclick="alert('Collection en préparation.')">DÉCOUVRIR</button>
-</div>
-
+<header class="top"><div class="wrap"><div class="brand">LORENZO SIX</div><div class="tag">L'UNIVERS DES COQUES PS5 SLIM</div></div></header>
+<main class="wrap">
+<section class="ambiance">
+<div class="eyebrow">Notre univers</div>
+<h1>Choisis ton ambiance</h1>
+<p class="sub">Des styles uniques classés par collection.</p>
+<div class="filters" id="filters">
+<button class="filter active" data-filter="all">Tout</button>
+<button class="filter" data-filter="Édition limitée">Édition limitée</button>
+<button class="filter" data-filter="Ville & néon">Ville & néon</button>
+<button class="filter" data-filter="Science-fiction">Science-fiction</button>
+<button class="filter" data-filter="Horreur">Horreur</button>
+<button class="filter" data-filter="Fantasy">Fantasy</button>
+<button class="filter" data-filter="Action">Action</button>
+<button class="filter" data-filter="Super-héros">Super-héros</button>
+<button class="filter" data-filter="Sport">Sport</button>
+<button class="filter" data-filter="Course auto">Course auto</button>
+<button class="filter" data-filter="Simulation">Simulation</button>
 </div>
 </section>
-
-<section id="edition">
-<h2>RAVEN &amp; SERPENT</h2>
-<p>Une collection exclusive imaginée par LORENZO SIX.</p>
-<p class="note">La fabrication, la compatibilité et la disponibilité doivent être confirmées avant toute vente.</p>
+<div class="section-head"><div><div class="eyebrow">LORENZO SIX SHOP</div><h2>Les collections</h2><p id="count">12 créations présentées</p></div>
+<label><span class="sub">Trier :</span> <select id="sort"><option value="default">Sélection</option><option value="az">Nom A à Z</option><option value="price">Prix croissant</option></select></label></div>
+<section class="grid" id="products">
+<article class="card" data-category="Édition limitée" data-name="Raven & Serpent" data-price="69.9"><div class="banner" style="--tone:#681b1b;--glow:#e33c16"><span>RAVEN &amp; SERPENT</span></div><div class="cardbody"><div class="category">Édition limitée</div><div class="compat">COMPATIBLE PS5 SLIM</div><h3>Raven &amp; Serpent</h3><p class="desc">Notre collection signature noir, rouge et or.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
+<article class="card" data-category="Ville & néon" data-name="Neon Vice" data-price="69.9"><div class="banner" style="--tone:#102c86;--glow:#e52a9c"><span>NEON VICE</span></div><div class="cardbody"><div class="category">Populaire</div><div class="compat">COMPATIBLE PS5 SLIM</div><h3>Neon Vice</h3><p class="desc">Ambiance nocturne et néons colorés.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
+<article class="card" data-category="Science-fiction" data-name="Shadow Protocol" data-price="69.9"><div class="banner" style="--tone:#263a19;--glow:#a6e52d"><span>SHADOW PROTOCOL</span></div><div class="cardbody"><div class="category">SF &amp; galaxies</div><div class="compat">COMPATIBLE PS5 SLIM</div><h3>Shadow Protocol</h3><p class="desc">Style futuriste sombre et tactique.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
+<article class="card" data-category="Horreur" data-name="Crimson Horror" data-price="69.9"><div class="banner" style="--tone:#681313;--glow:#ed1d20"><span>CRIMSON HORROR</span></div><div class="cardbody"><div class="category">Horreur</div><div class="compat">COMPATIBLE PS5 SLIM</div><h3>Crimson Horror</h3><p class="desc">Rouge profond et atmosphère inquiétante.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
+<article class="card" data-category="Science-fiction" data-name="Cosmic Sentinel" data-price="69.9"><div class="banner" style="--tone:#142d83;--glow:#26a9f4"><span>COSMIC SENTINEL</span></div><div class="cardbody"><div class="category">Cosmic &amp; spatial</div><div class="compat">COMPATIBLE PS5 SLIM</div><h3>Cosmic Sentinel</h3><p class="desc">Univers interstellaire et énergie cosmique.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
+<article class="card" data-category="Fantasy" data-name="Mythic Kingdom" data-price="69.9"><div class="banner" style="--tone:#74431c;--glow:#e8ad46"><span>MYTHIC KINGDOM</span></div><div class="cardbody"><div class="category">Fantasy</div><div class="compat">COMPATIBLE PS5 SLIM</div><h3>Mythic Kingdom</h3><p class="desc">Un royaume de légendes et de dragons.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
+<article class="card" data-category="Action" data-name="Urban Legend" data-price="69.9"><div class="banner" style="--tone:#54151d;--glow:#d31d35"><span>URBAN LEGEND</span></div><div class="cardbody"><div class="category">Action &amp; aventure</div><div class="compat">COMPATIBLE PS5 SLIM</div><h3>Urban Legend</h3><p class="desc">Béton, ville et contrastes rouges.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
+<article class="card" data-category="Sport" data-name="Champion Edition" data-price="69.9"><div class="banner" style="--tone:#183a22;--glow:#8bdc25"><span>CHAMPION EDITION</span></div><div class="cardbody"><div class="category">Sport</div><div class="compat">COMPATIBLE PS5 SLIM</div><h3>Champion Edition</h3><p class="desc">Un design dynamique et compétitif.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
+<article class="card" data-category="Action" data-name="Anime Spirit" data-price="69.9"><div class="banner" style="--tone:#5d1d87;--glow:#f23eea"><span>ANIME SPIRIT</span></div><div class="cardbody"><div class="category">Manga &amp; anime</div><div class="compat">COMPATIBLE PS5 SLIM</div><h3>Anime Spirit</h3><p class="desc">Graphisme inspiré de l'animation.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
+<article class="card" data-category="Super-héros" data-name="Titan Armor" data-price="69.9"><div class="banner" style="--tone:#173d70;--glow:#e6a52d"><span>TITAN ARMOR</span></div><div class="cardbody"><div class="category">Super-héros</div><div class="compat">COMPATIBLE PS5 SLIM</div><h3>Titan Armor</h3><p class="desc">Armure futuriste et reflets métalliques.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
+<article class="card" data-category="Course auto" data-name="Offroad X" data-price="69.9"><div class="banner" style="--tone:#6d391b;--glow:#ed9a35"><span>OFFROAD X</span></div><div class="cardbody"><div class="category">Courses auto</div><div class="compat">COMPATIBLE PS5 SLIM</div><h3>Offroad X</h3><p class="desc">Esprit rallye et tout-terrain.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
+<article class="card" data-category="Simulation" data-name="Dream City" data-price="69.9"><div class="banner" style="--tone:#13506c;--glow:#22c6df"><span>DREAM CITY</span></div><div class="cardbody"><div class="category">Simulation</div><div class="compat">COMPATIBLE PS5 SLIM</div><h3>Dream City</h3><p class="desc">Ville lumineuse et moderne.</p><p class="price">69,90 €</p><button class="add">Ajouter au panier</button></div></article>
 </section>
-
-<section id="contact">
-<h2>CONTACT</h2>
-<p>LORENZO SIX — Boutique en préparation.</p>
-</section>
-
-<footer>
-© 2026 LORENZO SIX — Tous droits réservés.
-<p class="note">Maquette de présentation. Aucun paiement ni commande réelle n'est activé.</p>
-</footer>
-
+<p class="notice">Visuels conceptuels. Produits présentés à titre de projet : fabrication, compatibilité exacte et disponibilité à confirmer avant toute commande.</p>
+</main>
+<div class="cartline" id="cart">Panier : 0 article</div>
+<footer><div class="wrap">© 2026 LORENZO SIX — Boutique en préparation. Les commandes et paiements en ligne ne sont pas encore activés.</div></footer>
+<script>
+let cart=0;
+document.querySelectorAll('.add').forEach(b=>b.addEventListener('click',()=>{cart++;document.getElementById('cart').textContent='Panier : '+cart+' article'+(cart>1?'s':'');b.textContent='Ajouté ✓';setTimeout(()=>b.textContent='Ajouter au panier',900)}));
+let active='all';
+function render(){const cards=[...document.querySelectorAll('.card')];let visible=cards.filter(c=>active==='all'||c.dataset.category===active);const sort=document.getElementById('sort').value;if(sort==='az')visible.sort((a,b)=>a.dataset.name.localeCompare(b.dataset.name));if(sort==='price')visible.sort((a,b)=>Number(a.dataset.price)-Number(b.dataset.price));const grid=document.getElementById('products');cards.forEach(c=>c.hidden=true);visible.forEach(c=>{c.hidden=false;grid.appendChild(c)});document.getElementById('count').textContent=visible.length+' collection(s) affichée(s)';}
+document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{document.querySelector('.filter.active').classList.remove('active');b.classList.add('active');active=b.dataset.filter;render()}));
+document.getElementById('sort').addEventListener('change',render);
+</script>
 </body>
 </html>
